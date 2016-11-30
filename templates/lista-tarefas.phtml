@@ -1,0 +1,31 @@
+<?php include('header.phtml'); ?>
+
+	<table class='table'>
+		<tr> <th> Título</th> <th> Data</th> <th> Início</th> <th> Término</th> 
+			 <th> Prioridade</th> <th> Descrição </th> <th> Anotações </th></tr>
+	<?php foreach ($atividades as $atividade): 
+
+	    if ($atividade['prioridade'] == 1)
+	    	$class = "success";
+	    if ($atividade['prioridade'] == 2)
+	    	$class = "info";
+	    if ($atividade['prioridade'] == 3)
+	    	$class = "danger";
+
+	    echo "<tr class='$class'>";
+	    ?>
+	        <td> <a href="/tarefa/<?=$atividade['id']?>" > <?=$atividade['titulo'] ?> </a></td>      
+	        <td><?=$atividade['data']?></td>
+	        <td><?=$atividade['hora_inicio']?></td>
+	        <td><?=$atividade['hora_fim']?></td>
+	        <td><?=$atividade['prioridade']?></td>
+	        <td><?=$atividade['descricao']?></td>
+	        <td><?=$atividade['anotacoes']?></td>
+	    </tr>
+	<?php endforeach; ?>
+
+	</table>
+	</div>
+
+</body>
+</html>

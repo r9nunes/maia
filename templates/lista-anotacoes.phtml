@@ -1,0 +1,17 @@
+<?php include('header.phtml'); ?>
+
+	<table class='table'>
+		<tr> <th> Título</th> <th> Data</th> <th> Anotações </th></tr>
+	<?php foreach ($anotacoes as $anotacoes):     ?>
+		<tr>
+	        <td><?=$anotacoes['titulo'] ?></td>      
+	        <td><?=$anotacoes['data']?></td>
+	        <td><?=$anotacoes['anotacoes']?></td>
+	    </tr>
+	<?php endforeach; ?>
+
+	</table>
+	</div>
+
+</body>
+</html>

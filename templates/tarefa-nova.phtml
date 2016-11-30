@@ -1,0 +1,75 @@
+<?php 
+	include('header.phtml'); 
+	$id = @$atividade['id'];
+	$prioridade = @$atividade['prioridade'];
+	$prioridades=[1=>'baixa', 'media', 'alta'];
+?>
+
+	<form method='post' action='/tarefa/nova'>
+		<div class="well well-sm"><h1> Tarefa (id: <?= @$id ?> )		</h1></div>
+		<div>
+		<div class=""><h2> dados gerais</h2></div>
+		<input type="hidden" name='id' value="<?= @$id ?>" >
+		<div class="form-group">
+	    	<label for="nome-tarefa">Tarefa:</label>
+	    	<input type="text" class="form-control" name="nome-tarefa" placeholder="título" 
+			value="<?= isset($id)?$atividade['titulo']:"" ?>">
+	    		
+	  	</div>
+
+
+		<div class="form-group">
+	    	<label for="prioridade">Prioridade:</label>
+	    	<div class="form-group">
+			  
+			  <select class="form-control" name="prioridade">
+			  <?php
+			  foreach ($prioridades as $key => $value) {
+			  	if ( $prioridade == $key )
+			  		echo "<option selected> $value </option>";
+			  	else
+			  		echo "<option> $value </option>";
+			  }
+			  ?>
+			  </select>
+			</div>
+	  	</div>
+
+	  	<div>
+	  		<label for="data-inicio">Data / hora:</label>
+	  	</div>
+	  	<div class='form-inline'>
+			<div class="form-group">
+			    <input type="date" class="form-control" name="data" value="<?= isset($id)?$atividade['data']:"" ?>">
+			</div>
+			<div class="form-group">
+			    <input type="time" class="form-control" name="hora-inicio" value="<?= isset($id)?$atividade['hora_inicio']:"" ?>">
+			</div>
+			as 
+			<div class="form-group">
+			    
+			    <input type="time" class="form-control" name="hora-fim" value="<?= isset($id)?$atividade['hora_fim']:"" ?>">
+			</div>
+			
+		</div>
+
+			<div class="form-group">
+			    <label for="descricao">Descrição:</label>
+			    <textarea class="form-control" name="descricao" rows="2"><?= isset($id)?$atividade['descricao']:"" ?></textarea>
+			</div>
+
+			<div class="form-group">
+			    <label for="anotacoes">Anotações:</label>
+			    <textarea class="form-control" name="anotacoes" rows="5"><?= isset($id)?$atividade['anotacoes']:"" ?></textarea>
+			</div>
+
+			<div>
+				<input type="submit" name="salvar" >
+			</div>
+		</div>
+
+
+
+	</form>
+
+</div>
